@@ -132,6 +132,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ArrayList中的remove方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/25/ArrayList中的remove方法/">ArrayList中的remove方法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/25/ArrayList中的remove方法/" class="archive-article-date">
+  	<time datetime="2019-07-25T15:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>​        ArrayList一共给出了两种[^remove]方法，一种参数是<strong>下标</strong>,一种参数为<strong>对象</strong>。</p>
+<p>​        参数为下标的方法很好理解，根据下标来删除元素，看下面代码示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">arrayList.add(<span class="string">"h"</span>);</span><br><span class="line">arrayList.add(<span class="string">"e"</span>);</span><br><span class="line">arrayList.add(<span class="string">"l"</span>);</span><br><span class="line">arrayList.add(<span class="string">"l"</span>);</span><br><span class="line">arrayList.add(<span class="string">"o"</span>);</span><br><span class="line">System.out.println(<span class="string">"本来的值："</span> + arrayList);</span><br><span class="line">arrayList.remove(<span class="number">1</span>);</span><br><span class="line">System.out.println(<span class="string">"remove之后的值："</span> + arrayList);</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/07/25/ArrayList中的remove方法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/25/ArrayList中的remove方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java初始化加载顺序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -153,18 +235,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>​        Java程序初始化的优先级依次是</p>
-<pre><code>&gt;​    1、父类静态变量，父类静态代码块
-&gt;
-&gt;​    2、子类静态变量，子类静态代码块
-&gt;
-&gt;​    3、父类非静态变量，父类非静态代码块
-&gt;
-&gt;​    4、父类构造器
-&gt;
-&gt;​    5、子类非静态变量，子类非静态代码块
-&gt;
-&gt;​    6、子类构造器 
-</code></pre>
+<blockquote>
+<p>1.父类静态变量，父类静态代码块<br>2.子类静态变量，子类静态代码块<br>3.父类非静态变量，父类非静态代码块<br>4.父类构造器<br>5.子类非静态变量，子类非静态代码块<br>6.子类构造器 </p>
+</blockquote>
         
           <a class="article-more-a" href="/2019/07/23/Java初始化加载顺序/#more">more >></a>
         
@@ -314,6 +387,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">容器</a>
               </li>
              
               <li class="article-tag-list-item">
