@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ArrayList中的remove方法 | 炫酷小子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="​        ArrayList一共给出了两种remove方法，一种参数是下标,一种参数为对象。 ​        参数为下标的方法很好理解，根据下标来删除元素，看下面代码示例 123456789List&amp;lt;String&amp;gt; arrayList = new ArrayList&amp;lt;&amp;gt;();arrayList.add(&quot;h&quot;);arrayList.add(&quot;e&quot;);arrayLi">
+  <meta name="description" content="​        ArrayList一共给出了两种remove方法，一种参数是下标（E remove(int index)）,一种参数为对象(boolean remove(Object o))。 ​        参数为下标的方法很好理解，根据下标来删除元素，看下面代码示例 123456789List&amp;lt;String&amp;gt; arrayList = new ArrayList&amp;lt;&amp;gt;(">
 <meta name="keywords" content="Java,容器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ArrayList中的remove方法">
 <meta property="og:url" content="http://yoursite.com/2019/07/25/ArrayList中的remove方法/index.html">
 <meta property="og:site_name" content="炫酷小子的博客">
-<meta property="og:description" content="​        ArrayList一共给出了两种remove方法，一种参数是下标,一种参数为对象。 ​        参数为下标的方法很好理解，根据下标来删除元素，看下面代码示例 123456789List&amp;lt;String&amp;gt; arrayList = new ArrayList&amp;lt;&amp;gt;();arrayList.add(&quot;h&quot;);arrayList.add(&quot;e&quot;);arrayLi">
+<meta property="og:description" content="​        ArrayList一共给出了两种remove方法，一种参数是下标（E remove(int index)）,一种参数为对象(boolean remove(Object o))。 ​        参数为下标的方法很好理解，根据下标来删除元素，看下面代码示例 123456789List&amp;lt;String&amp;gt; arrayList = new ArrayList&amp;lt;&amp;gt;(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-25T16:50:27.617Z">
+<meta property="og:updated_time" content="2019-07-26T13:56:54.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArrayList中的remove方法">
-<meta name="twitter:description" content="​        ArrayList一共给出了两种remove方法，一种参数是下标,一种参数为对象。 ​        参数为下标的方法很好理解，根据下标来删除元素，看下面代码示例 123456789List&amp;lt;String&amp;gt; arrayList = new ArrayList&amp;lt;&amp;gt;();arrayList.add(&quot;h&quot;);arrayList.add(&quot;e&quot;);arrayLi">
+<meta name="twitter:description" content="​        ArrayList一共给出了两种remove方法，一种参数是下标（E remove(int index)）,一种参数为对象(boolean remove(Object o))。 ​        参数为下标的方法很好理解，根据下标来删除元素，看下面代码示例 123456789List&amp;lt;String&amp;gt; arrayList = new ArrayList&amp;lt;&amp;gt;(">
   
     <link rel="alternative" href="/atom.xml" title="炫酷小子的博客" type="application/atom+xml">
   
@@ -155,7 +155,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>​        ArrayList一共给出了两种<strong>remove</strong>方法，一种参数是<strong>下标</strong>,一种参数为<strong>对象</strong>。</p>
+        <p>​        ArrayList一共给出了两种<strong>remove</strong>方法，一种参数是<strong>下标（E remove(int index)）</strong>,一种参数为<strong>对象(boolean remove(Object o))</strong>。</p>
 <p>​        参数为下标的方法很好理解，根据下标来删除元素，看下面代码示例</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">arrayList.add(<span class="string">"h"</span>);</span><br><span class="line">arrayList.add(<span class="string">"e"</span>);</span><br><span class="line">arrayList.add(<span class="string">"l"</span>);</span><br><span class="line">arrayList.add(<span class="string">"l"</span>);</span><br><span class="line">arrayList.add(<span class="string">"o"</span>);</span><br><span class="line">System.out.println(<span class="string">"本来的值："</span> + arrayList);</span><br><span class="line">arrayList.remove(<span class="number">1</span>);</span><br><span class="line">System.out.println(<span class="string">"remove之后的值："</span> + arrayList);</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -167,10 +167,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">5</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">	arrayList.add(i);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"本来的值："</span> + arrayList);</span><br><span class="line">arrayList.remove(<span class="number">1</span>);</span><br><span class="line">System.out.println(<span class="string">"根据下标remove之后的值："</span> + arrayList);</span><br><span class="line">arrayList.remove(<span class="keyword">new</span> Integer(<span class="number">1</span>));</span><br><span class="line">System.out.println(<span class="string">"根据对象remove之后的值："</span> + arrayList);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output:</span><br><span class="line">    本来的值：[5, 4, 3, 2, 1, 0]</span><br><span class="line">    根据下标remove之后的值：[5, 3, 2, 1, 0]</span><br><span class="line">    根据对象remove之后的值：[5, 3, 2, 0]</span><br></pre></td></tr></table></figure>
 <p>​        由输出可以看到，在第一次<strong>remove(1)</strong>下标为1的元素4被删除了，接着<strong>remove(new Integer(1))</strong>之后删除了值为1的元素。</p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>​        ArrayList的<strong>remove</strong>方法分为参数为<strong>int</strong>和<strong>Object</strong>为对象两种；</p>
-<p>​        参数为<strong>int</strong>的<strong>remove（int index）</strong>方法将删除目标下标的元素；</p>
-<p>​        参数为<strong>Object</strong>的<strong>remove(Object o)</strong>方法将删除第一个与参数equals为true的元素，所以可以通过重写ArrayList的equals方法来更改此的删除逻辑；</p>
-<p>​        如果ArrayList的值为int类型，如果要使用<strong>remove(Object o)</strong>方法，需要将值转为Integer的包装类。</p>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>​        ArrayList的<strong>remove</strong>方法分为参数为<strong>int</strong>和<strong>Object</strong>两种；</p>
+<p>​        参数为<strong>int</strong>的<strong>remove（int index）</strong>方法将删除目标下标的元素,返回删除元素；</p>
+<p>​        参数为<strong>Object</strong>的<strong>remove(Object o)</strong>方法将删除第一个与参数equals为true的元素，返回是否删除成功，可以通过重写ArrayList的equals方法来更改此的删除逻辑；</p>
+<p>​        如果ArrayList的值为int类型，如果要使用<strong>remove(Object o)</strong>方法，需要将参数转为Integer的包装类。</p>
 
       
 
@@ -386,11 +386,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
+                <a href="javascript:void(0)" class="js-tag color3">容器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">容器</a>
+                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
               </li>
             
             <div class="clearfix"></div>
