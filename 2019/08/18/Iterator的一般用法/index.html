@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Java | 炫酷小子的博客</title>
+  <title>Java中Iterator的一般用法 | 炫酷小子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="炫酷小子的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Java/index.html">
+  <meta name="description" content="迭代器（Iterator）是一个对象，它的工作是遍历并选择序列中的对象，而客户端程序员不必知道或关心该序列底层的结构。此外，迭代器通常被称为轻量级对象：创建它的代价小。 Java中的Iterator只能单向移动，这个Iterator只能用来：  1.使用方法iterator()要求容器返回一个Iterator。Iterator将准备好返回序列的第一个元素。 2.使用next()获得序列中的下一个元">
+<meta name="keywords" content="Java,容器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中Iterator的一般用法">
+<meta property="og:url" content="http://yoursite.com/2019/08/18/Iterator的一般用法/index.html">
 <meta property="og:site_name" content="炫酷小子的博客">
+<meta property="og:description" content="迭代器（Iterator）是一个对象，它的工作是遍历并选择序列中的对象，而客户端程序员不必知道或关心该序列底层的结构。此外，迭代器通常被称为轻量级对象：创建它的代价小。 Java中的Iterator只能单向移动，这个Iterator只能用来：  1.使用方法iterator()要求容器返回一个Iterator。Iterator将准备好返回序列的第一个元素。 2.使用next()获得序列中的下一个元">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-18T10:51:35.602Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="炫酷小子的博客">
+<meta name="twitter:title" content="Java中Iterator的一般用法">
+<meta name="twitter:description" content="迭代器（Iterator）是一个对象，它的工作是遍历并选择序列中的对象，而客户端程序员不必知道或关心该序列底层的结构。此外，迭代器通常被称为轻量级对象：创建它的代价小。 Java中的Iterator只能单向移动，这个Iterator只能用来：  1.使用方法iterator()要求容器返回一个Iterator。Iterator将准备好返回序列的第一个元素。 2.使用next()获得序列中的下一个元">
   
     <link rel="alternative" href="/atom.xml" title="炫酷小子的博客" type="application/atom+xml">
   
@@ -130,36 +135,59 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Iterator的一般用法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Java中Iterator的一般用法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/18/Iterator的一般用法/" class="archive-article-date">
+
+        
+        <a href="/2019/08/18/Iterator的一般用法/" class="archive-article-date">
   	<time datetime="2019-08-18T09:22:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/18/Iterator的一般用法/">Java中Iterator的一般用法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>迭代器（Iterator）</strong>是一个对象，它的工作是遍历并选择序列中的对象，而客户端程序员不必知道或关心该序列底层的结构。此外，迭代器通常被称为<strong>轻量级对象</strong>：创建它的代价小。</p>
+<p>Java中的<strong>Iterator</strong>只能单向移动，这个<strong>Iterator</strong>只能用来：</p>
+<blockquote>
+<p>1.使用方法<strong>iterator()</strong>要求容器返回一个<strong>Iterator</strong>。<strong>Iterator</strong>将准备好返回序列的第一个元素。</p>
+<p>2.使用<strong>next()</strong>获得序列中的下一个元素。</p>
+<p>3.使用<strong>hasNext()</strong>检查序列中是否还有元素。</p>
+<p>4.使用<strong>remove()</strong>将迭代器新近返回的元素删除。  </p>
+</blockquote>
+<a id="more"></a>
+<p>代码示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list.add(<span class="string">"h"</span>);</span><br><span class="line">list.add(<span class="string">"e"</span>);</span><br><span class="line">list.add(<span class="string">"l"</span>);</span><br><span class="line">list.add(<span class="string">"l"</span>);</span><br><span class="line">list.add(<span class="string">"o"</span>);</span><br><span class="line">Iterator&lt;String&gt; iterator = list.iterator();<span class="comment">//获得Iterator迭代器</span></span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">	String s = iterator.next();</span><br><span class="line">	System.out.print(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output:</span><br><span class="line">	hello</span><br></pre></td></tr></table></figure>
+<p>如果你只是希望遍历容器，并不打算修改容器对象本身，那么使用<strong>foreach</strong>语法会显得更加简洁。但是如果你想要修改容器中的元素，那么就有要使用<strong>Iterator</strong>的必要性了。</p>
+<p>下面来看一个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面代码中的list还是使用上个示例中的list，list中的元素分别为h、e、l、l、o</span></span><br><span class="line">System.out.println(<span class="string">"修改前:"</span> + list);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (list.get(i).equals(<span class="string">"l"</span>)) &#123;</span><br><span class="line">		list.remove(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"修改后:"</span> + list);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">output:</span><br><span class="line">	修改前:[h, e, l, l, o]</span><br><span class="line">	修改后:[h, e, l, o]</span><br></pre></td></tr></table></figure>
+<p>在上述的代码中我们是想要删除<strong>list</strong>中所有为<strong>l</strong>的元素，但是得到的明显不是我们想要的结果。</p>
+<p>那么让我们来看看在删除的过程中发生了什么，从而导致没有删除掉第二个<strong>l</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">	System.out.println(<span class="string">"i为："</span> + i + <span class="string">"时，list.get(i)为"</span>  + list.get(i));</span><br><span class="line">	<span class="keyword">if</span> (list.get(i).equals(<span class="string">"l"</span>)) &#123;</span><br><span class="line">		list.remove(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">output:</span><br><span class="line">	i为：0时，list.get(i)为h</span><br><span class="line">	i为：1时，list.get(i)为e</span><br><span class="line">	i为：2时，list.get(i)为l</span><br><span class="line">	i为：3时，list.get(i)为o</span><br></pre></td></tr></table></figure>
+<p>从输出中可以看到，一共只遍历了4个元素，并且下标为3的元素居然是<strong>o</strong>。这是因为在<strong>remove</strong>掉下标为2的元素之后，<strong>list</strong>的值变为了<strong>[h,e,l,o]</strong>，于是导致另一个<strong>l</strong>并没有被遍历到。如果使用迭代器就不会出现这个问题了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"修改前:"</span> + list);</span><br><span class="line">Iterator&lt;String&gt; iterator = list.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">	String s = iterator.next();</span><br><span class="line">	<span class="keyword">if</span> (s.equals(<span class="string">"l"</span>)) &#123;</span><br><span class="line">		iterator.remove();;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"修改后:"</span> + list);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">output:</span><br><span class="line">	修改前:[h, e, l, l, o]</span><br><span class="line">	修改后:[h, e, o]</span><br></pre></td></tr></table></figure>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>有了<strong>Iterator</strong>就不必为容器中元素的数量操心了，那是由<strong>hasNext()</strong>和<strong>next()</strong>关心的事情。</p>
+<p>如果你只是向前遍历容器，并不打算修改容器对象本身，那么使用<strong>foreach</strong>语法会显得更加简洁。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -175,141 +203,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/18/Iterator的一般用法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/30/Java中的final关键字/" class="archive-article-date">
-  	<time datetime="2019-07-30T14:45:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/30/Java中的final关键字/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java中的final关键字</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/30/Java中的final关键字/">Java中的final关键字</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/ArrayList中的remove方法/" class="archive-article-date">
-  	<time datetime="2019-07-25T15:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/ArrayList中的remove方法/">ArrayList中的remove方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/Java初始化加载顺序/" class="archive-article-date">
-  	<time datetime="2019-07-23T15:45:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/Java初始化加载顺序/">Java初始化加载顺序</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">初始化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -332,9 +325,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
