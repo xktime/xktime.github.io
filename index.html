@@ -132,29 +132,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Java泛型详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-HashMap中的Hash方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/03/Java泛型详解/">Java泛型详解</a>
+      <a class="article-title" href="/2019/11/23/HashMap中的Hash方法/">HashMap中的hash方法</a>
     </h1>
   
 
         
-        <a href="/2019/11/03/Java泛型详解/" class="archive-article-date">
-  	<time datetime="2019-11-03T14:50:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-03</time>
+        <a href="/2019/11/23/HashMap中的Hash方法/" class="archive-article-date">
+  	<time datetime="2019-11-23T15:16:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>泛型</strong>是把类型明确的工作推迟到创建对象或调用方法的时候才去明确的特殊的类型。</p>
-<p>当我们使用容器时，如果不定义泛型，那么泛型类型实际上就是Object。也就是说编译器允许你向容器中放入任何类型，当你向下转型时就会有强转的问题，这样程序就不太安全。</p>
-
+        <p>首先让我们来看一下，JDK中1.8HashMap中hash方法的具体实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">int</span> h;</span><br><span class="line">     <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/11/23/HashMap中的Hash方法/#more">more >></a>
+        
       
 
       
@@ -168,6 +170,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">初始化</a>
         		</li>
       		
 		</ul>
@@ -685,11 +691,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">容器</a>
+                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
+                <a href="javascript:void(0)" class="js-tag color3">容器</a>
               </li>
             
             <div class="clearfix"></div>
