@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="炫酷小子的博客">
 <meta property="og:description" content="首先让我们来看一下，JDK中1.8HashMap中hash方法的具体实现 1234static final int hash(Object key) &amp;#123;     int h;     return (key == null) ? 0 : (h = key.hashCode()) ^ (h &amp;gt;&amp;gt;&amp;gt; 16); &amp;#125;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-23T15:51:10.884Z">
+<meta property="og:updated_time" content="2019-12-01T13:46:18.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap中的hash方法">
 <meta name="twitter:description" content="首先让我们来看一下，JDK中1.8HashMap中hash方法的具体实现 1234static final int hash(Object key) &amp;#123;     int h;     return (key == null) ? 0 : (h = key.hashCode()) ^ (h &amp;gt;&amp;gt;&amp;gt; 16); &amp;#125;">
@@ -161,7 +161,7 @@
 <p>我们可以看到，hash方法所返回的hash值是key的hashCode与右移16位后的hashCode的按位异或。</p>
 <p>如果我们要搞清楚，为什么需要对key的hashCode进行扰动，我们首先要知道hash值是用来干什么的。</p>
 <p>那么hash值是用来干什么的呢？简单来说，因为HashMap的底层数据结构是散列表，而HashMap的散列函数是用hash值<strong>按位与</strong>上<strong>表的大小 - 1</strong>。如果说散列表的大小为16，只要hashCode的后4位为0，不论高位怎样变化，最终的结果都是0。</p>
-<p><strong>扰动函数混合了hashCode的高位和低位，使得可以减少碰撞，进一步降低hash冲突的几率。</strong></p>
+<p><strong>扰动函数混合了hashCode的高位和低位，增加低位的随机性，并且混合后的值也保持了高位的特征。使得可以减少碰撞，进一步降低hash冲突的几率。</strong></p>
 
       
 
@@ -377,11 +377,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
+                <a href="javascript:void(0)" class="js-tag color3">容器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">容器</a>
+                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
               </li>
             
             <div class="clearfix"></div>
