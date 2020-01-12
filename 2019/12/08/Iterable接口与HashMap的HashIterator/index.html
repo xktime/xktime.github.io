@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Iterable接口与HashMap的HashIterator | 炫酷小子的博客</title>
+  <title>HashMap的HashIterator | 炫酷小子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Iterable接口与HashMap的HashIterator">
+  <meta name="description" content="我们在使用HashMap的时候经常会用到它的entryset()、keyset()以及values()方法来获取它的元素。 但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。 那么当我们调用entryset()、keyset()以及values()这个三个方法时，是怎样获取到HashMap的元素的呢？ 答案是通过HashMap的HashIterator。 那么HashIte">
+<meta name="keywords" content="Java,容器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HashMap的HashIterator">
 <meta property="og:url" content="http://yoursite.com/2019/12/08/Iterable接口与HashMap的HashIterator/index.html">
 <meta property="og:site_name" content="炫酷小子的博客">
+<meta property="og:description" content="我们在使用HashMap的时候经常会用到它的entryset()、keyset()以及values()方法来获取它的元素。 但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。 那么当我们调用entryset()、keyset()以及values()这个三个方法时，是怎样获取到HashMap的元素的呢？ 答案是通过HashMap的HashIterator。 那么HashIte">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-08T11:38:07.525Z">
+<meta property="og:updated_time" content="2020-01-12T15:34:27.028Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Iterable接口与HashMap的HashIterator">
+<meta name="twitter:title" content="HashMap的HashIterator">
+<meta name="twitter:description" content="我们在使用HashMap的时候经常会用到它的entryset()、keyset()以及values()方法来获取它的元素。 但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。 那么当我们调用entryset()、keyset()以及values()这个三个方法时，是怎样获取到HashMap的元素的呢？ 答案是通过HashMap的HashIterator。 那么HashIte">
   
     <link rel="alternative" href="/atom.xml" title="炫酷小子的博客" type="application/atom+xml">
   
@@ -138,7 +142,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Iterable接口与HashMap的HashIterator
+      HashMap的HashIterator
     </h1>
   
 
@@ -151,7 +155,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>我们在使用<strong>HashMap</strong>的时候经常会用到它的<strong>entryset()</strong>、<strong>keyset()</strong>以及<strong>values()</strong>方法来获取它的元素。</p>
+<p>但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。</p>
+<p>那么当我们调用<strong>entryset()</strong>、<strong>keyset()</strong>以及<strong>values()</strong>这个三个方法时，是怎样获取到HashMap的元素的呢？</p>
+<p>答案是通过HashMap的<strong>HashIterator</strong>。</p>
+<p>那么<strong>HashIterator</strong>是如果实现我们获取元素的呢。</p>
+<p>首先我们要知道什么是<strong>Iterator</strong>。</p>
+<p><strong>如果我们想要我们的类可以使用foreach，那么就必须实现Iterable接口。</strong></p>
+<p>Iterable接口的构造如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">Iterator&lt;T&gt; <span class="title">iterator</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> T&gt; action)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(action);</span><br><span class="line">        <span class="keyword">for</span> (T t : <span class="keyword">this</span>) &#123;</span><br><span class="line">            action.accept(t);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Spliterator&lt;T&gt; <span class="title">spliterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Spliterators.spliteratorUnknownSize(iterator(), <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<strong>forEach()</strong>和<strong>spliterator()</strong>方法，我们要做的就是<strong>实现Iterator方法，返回一个Iterator。</strong></p>
+
       
 
       
@@ -159,6 +173,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -268,7 +297,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 炫酷小子
+    		&copy; 2020 炫酷小子
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -351,11 +380,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
+                <a href="javascript:void(0)" class="js-tag color3">容器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">容器</a>
+                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
               </li>
             
             <div class="clearfix"></div>
