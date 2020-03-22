@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>HashMap的HashIterator | 炫酷小子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们在使用HashMap的时候经常会用到它的entryset()、keyset()以及values()方法来获取它的元素。 但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。 那么当我们调用entryset()、keyset()以及values()这个三个方法时，是怎样获取到HashMap的元素的呢？ 答案是通过HashMap的HashIterator。 那么HashIte">
+  <meta name="description" content="我们在使用HashMap的时候经常会用到它的entryset()、keyset()以及values()方法来获取它的元素。 但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。 那么当我们调用entryset()、keyset()以及values()这个三个方法时，是怎样获取到HashMap的元素的呢？ 答案是通过HashMap的HashIterator。">
 <meta name="keywords" content="Java,容器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap的HashIterator">
 <meta property="og:url" content="http://yoursite.com/2019/12/08/Iterable接口与HashMap的HashIterator/index.html">
 <meta property="og:site_name" content="炫酷小子的博客">
-<meta property="og:description" content="我们在使用HashMap的时候经常会用到它的entryset()、keyset()以及values()方法来获取它的元素。 但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。 那么当我们调用entryset()、keyset()以及values()这个三个方法时，是怎样获取到HashMap的元素的呢？ 答案是通过HashMap的HashIterator。 那么HashIte">
+<meta property="og:description" content="我们在使用HashMap的时候经常会用到它的entryset()、keyset()以及values()方法来获取它的元素。 但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。 那么当我们调用entryset()、keyset()以及values()这个三个方法时，是怎样获取到HashMap的元素的呢？ 答案是通过HashMap的HashIterator。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-22T03:35:29.729Z">
+<meta property="og:updated_time" content="2020-03-22T03:42:27.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap的HashIterator">
-<meta name="twitter:description" content="我们在使用HashMap的时候经常会用到它的entryset()、keyset()以及values()方法来获取它的元素。 但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。 那么当我们调用entryset()、keyset()以及values()这个三个方法时，是怎样获取到HashMap的元素的呢？ 答案是通过HashMap的HashIterator。 那么HashIte">
+<meta name="twitter:description" content="我们在使用HashMap的时候经常会用到它的entryset()、keyset()以及values()方法来获取它的元素。 但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。 那么当我们调用entryset()、keyset()以及values()这个三个方法时，是怎样获取到HashMap的元素的呢？ 答案是通过HashMap的HashIterator。">
   
     <link rel="alternative" href="/atom.xml" title="炫酷小子的博客" type="application/atom+xml">
   
@@ -159,6 +159,7 @@
 <p>但是当我们查看HashMap的源码时，却并没有发现它对这三个容器进行赋值。</p>
 <p>那么当我们调用<strong>entryset()</strong>、<strong>keyset()</strong>以及<strong>values()</strong>这个三个方法时，是怎样获取到HashMap的元素的呢？</p>
 <p>答案是通过HashMap的<strong>HashIterator</strong>。</p>
+<a id="more"></a>
 <p>那么<strong>HashIterator</strong>是如果实现我们获取元素的呢。</p>
 <p>首先我们要知道什么是<strong>Iterator</strong>。</p>
 <p><strong>如果我们想要我们的类可以使用foreach，那么就必须实现Iterable接口。</strong></p>
