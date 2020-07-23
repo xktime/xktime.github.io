@@ -132,6 +132,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Redis简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/23/Redis简介/">Redis简介</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/23/Redis简介/" class="archive-article-date">
+  	<time datetime="2020-07-23T13:54:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Redis常见数据结构以及使用场景"><a href="#Redis常见数据结构以及使用场景" class="headerlink" title="Redis常见数据结构以及使用场景"></a>Redis常见数据结构以及使用场景</h4><ol>
+<li><p>String: </p>
+<ul>
+<li>String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。</li>
+<li>使用场景：常规缓存应用，计数器等。</li>
+</ul>
+</li>
+<li><p>Hash:</p>
+<ul>
+<li>Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。</li>
+<li>使用场景：hash更适合于对象的存储（经常需要变更的信息），String更适合字符串存储。</li>
+</ul>
+</li>
+<li>List:<ul>
+<li>实际上是一个链表。如果key不存在创建新的链表，如果key存在新增内容。在两边插入或者改动效率最高，中间元素相对较差。
+        
+          <a class="article-more-a" href="/2020/07/23/Redis简介/#more">more >></a>
+        
+      
+
+      
+    </li></ul></li></ol></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL优化相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -925,6 +1011,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
             
             <div class="clearfix"></div>

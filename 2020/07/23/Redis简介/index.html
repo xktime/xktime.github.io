@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Java | 炫酷小子的博客</title>
+  <title>Redis简介 | 炫酷小子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="炫酷小子的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Java/index.html">
+  <meta name="description" content="Redis常见数据结构以及使用场景 String:   String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。 使用场景：常规缓存应用，计数器等。   Hash:  Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。 使用场景：hash更适合">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis简介">
+<meta property="og:url" content="http://yoursite.com/2020/07/23/Redis简介/index.html">
 <meta property="og:site_name" content="炫酷小子的博客">
+<meta property="og:description" content="Redis常见数据结构以及使用场景 String:   String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。 使用场景：常规缓存应用，计数器等。   Hash:  Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。 使用场景：hash更适合">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-23T15:18:23.923Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="炫酷小子的博客">
+<meta name="twitter:title" content="Redis简介">
+<meta name="twitter:description" content="Redis常见数据结构以及使用场景 String:   String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。 使用场景：常规缓存应用，计数器等。   Hash:  Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。 使用场景：hash更适合">
   
     <link rel="alternative" href="/atom.xml" title="炫酷小子的博客" type="application/atom+xml">
   
@@ -130,356 +135,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Redis简介" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis简介
+    </h1>
+  
+
+        
+        <a href="/2020/07/23/Redis简介/" class="archive-article-date">
+  	<time datetime="2020-07-23T13:54:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Redis常见数据结构以及使用场景"><a href="#Redis常见数据结构以及使用场景" class="headerlink" title="Redis常见数据结构以及使用场景"></a>Redis常见数据结构以及使用场景</h4><ol>
+<li><p>String: </p>
+<ul>
+<li>String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。</li>
+<li>使用场景：常规缓存应用，计数器等。</li>
+</ul>
+</li>
+<li><p>Hash:</p>
+<ul>
+<li>Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。</li>
+<li>使用场景：hash更适合于对象的存储（经常需要变更的信息），String更适合字符串存储。</li>
+</ul>
+</li>
+<li>List:<ul>
+<li>实际上是一个链表。如果key不存在创建新的链表，如果key存在新增内容。在两边插入或者改动效率最高，中间元素相对较差。<a id="more"></a></li>
+<li>使用场景： 微博的关注列表，粉丝列表，消息列表等功能都可以用Redis的list结构来实现。</li>
+</ul>
+</li>
+<li>Set:<ul>
+<li>Set对外提供的功能与List类似，不同于Set可以自动排重。Set提供了判断某个成员是否在一个Set集合内的接口。可以基于Set轻易实现交集、并集、差集的操作。</li>
+<li>应用场景：共同关注，共同粉丝，共同喜好等。</li>
+</ul>
+</li>
+<li><p>Sorted Set:</p>
+<ul>
+<li><p>和Set相比，Sorted Set增加了一个权重参数score，使得集合中的元素能够按score进行有序排行。</p>
+</li>
+<li><p>应用场景：在直播系统中，实时排行信息包含直播间在线用户列表、各种礼物排行榜等信息。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="Redis过期时间处理"><a href="#Redis过期时间处理" class="headerlink" title="Redis过期时间处理"></a>Redis过期时间处理</h4><p>Redis过期时间处理时通过定性删除+惰性删除<br><strong>定期删除</strong>：Redis默认是每隔100ms就随机抽取一些设置了过期时间的key，检查其是否过期，如果过期就删除。注意这里是随机抽取的                ，因为每隔100ms就遍历所有设置过期时间的key的话，会给CPU带来很大的负载。<br><strong>惰性删除</strong>：定期删除可能会导致很多过期key到了时间并没有被删除掉，所以就有了惰性删除。假如你的过期key，靠定期删除没有被删除掉，还停留在内存里，除非你的系统区查一下那个key,才会被Redis给删除掉。<br>因为可能出现key过期，但是该key一直未被使用，过期key一直停留在内存中的情况，Redis还要通过内存淘汰机制来清理key。<br>Redis提供6中数据淘汰策略：</p>
+<blockquote>
+<p>​        1.volatile-lru:从已设置过期时间的数据集中挑选最近最少使用的数据淘汰。<br>    ​        2.volatile-ttl:从已设置过期时间的数据集中挑选将要过期的数据淘汰。<br>    ​        3.volatile-random：从已设置过期时间的数据集中任意选择数据淘汰。<br>    ​        4.allkeys-lru（最常被使用）:当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的key。<br>    ​        5.allkeys-random:从数据集中任意选择数据淘汰。<br>    ​        6.no-eviction:禁止驱逐数据，也就是说当内存不足以容纳新写入数据时，新写入操作会报错。<br>4.0版本后增加以下两种：<br>    ​        7.volatile-lfu:从已设置过期时间的数据集中挑选最不经常使用的数据淘汰。<br>    ​        8.allkeys-lfu:当内存不足以容纳新写入数据时，在键空间中，移除最不经常使用的key。</p>
+</blockquote>
+<h5 id="Redis持久化机制"><a href="#Redis持久化机制" class="headerlink" title="Redis持久化机制"></a>Redis持久化机制</h5><p><strong>快照（RDB）</strong>：<br>        Redis可以通过创建快照来获得存储在内存里面的数据在某个时间点上的副本。Redis创建快照之后，可以对快照进行备份，可以将快照复制到其他服务器从而创建具有相同数据的服务器副本（Redis主从结构，主要用来提高Redis性能），还可以将快照留在原地以便重启服务器时使用。<br>        快照持久化是Redis默认采用的持久化方式，在redis.conf配置文件中默认有此下配置：</p>
+<blockquote>
+<p>save 900 1 //在900秒之后，如果至少有一个key发生变化，Redis就会自动触发BGSAVE命令创建快照。 </p>
+</blockquote>
+<p><strong>追加文件（AOF）</strong>：<br>        与快照持久化相比，AOF持久化的实时性更好，因此已成为主流的持久化方案。默认情况下Redis没有开启AOF方式的持久化，可以通过appendonly参数开启：</p>
+<blockquote>
+<p>appendonly yes  </p>
+</blockquote>
+<p>​        开启AOF持久化后每执行一条会更改Redis中的数据的命令，Redis就会将该命令写入硬盘中的AOF文件。AOF文件的保存位置和RDB文件的位置相同，都是通过dir参数设置的，默认的文件名是appendonly.aof。<br>​        在Redis的配置文件中存在三种不同的AOF持久化方式，它们分别是：<br>​            1. appendfsync always     //每次有数据修改发生时都会写入AOF文件，这样会严重降低Redis的速度<br>​            2. appendfsync everysec //每秒钟同步一次，显示地将多个写命令同步到硬盘<br>​            3. appendfsync no            //让操作系统决定何时进行同步<br>​        为了兼顾数据和写入性能，用户可以考虑appendfsync everysec选项，让Redis每秒同步一次AOF文件，Redis性能几乎没受到任何影响。而且这样即使出现系统崩溃，用户最多只会丢失一秒之内产生的数据。当硬盘忙于执行写入操作的时候，Redis还会优雅的放慢自己的速度以便适应硬盘的最大写入速度。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/12/Java类型信息/" class="archive-article-date">
-  	<time datetime="2020-04-12T15:27:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/12/Java类型信息/">Java类型信息</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/08/Iterable接口与HashMap的HashIterator/" class="archive-article-date">
-  	<time datetime="2019-12-08T11:38:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/08/Iterable接口与HashMap的HashIterator/">HashMap的HashIterator</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/23/Redis简介/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/23/HashMap中的Hash方法/" class="archive-article-date">
-  	<time datetime="2019-11-23T15:16:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/22/MySQL优化相关/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL优化相关</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/23/HashMap中的Hash方法/">HashMap中的hash方法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">初始化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/27/Java抽象类的基本使用/" class="archive-article-date">
-  	<time datetime="2019-10-27T13:37:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/27/Java抽象类的基本使用/">Java抽象类的基本使用</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/18/Iterator的一般用法/" class="archive-article-date">
-  	<time datetime="2019-08-18T09:22:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/18/Iterator的一般用法/">Java中Iterator的一般用法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/30/Java中的final关键字/" class="archive-article-date">
-  	<time datetime="2019-07-30T14:45:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/30/Java中的final关键字/">Java中的final关键字</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/ArrayList中的remove方法/" class="archive-article-date">
-  	<time datetime="2019-07-25T15:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/ArrayList中的remove方法/">ArrayList中的remove方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/Java初始化加载顺序/" class="archive-article-date">
-  	<time datetime="2019-07-23T15:45:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/Java初始化加载顺序/">Java初始化加载顺序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">初始化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -502,9 +341,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
