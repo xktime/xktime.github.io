@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Redis简介 | 炫酷小子的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Redis常见数据结构以及使用场景 String:   String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。 使用场景：常规缓存应用，计数器等。   Hash:  Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。 使用场景：hash更适合">
+  <meta name="description" content="Redis常见数据结构以及使用场景String: String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。 使用场景：常规缓存应用，计数器等。  Hash: Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。  使用场景：hash更适合于对象的">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis简介">
 <meta property="og:url" content="http://yoursite.com/2020/07/23/Redis简介/index.html">
 <meta property="og:site_name" content="炫酷小子的博客">
-<meta property="og:description" content="Redis常见数据结构以及使用场景 String:   String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。 使用场景：常规缓存应用，计数器等。   Hash:  Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。 使用场景：hash更适合">
+<meta property="og:description" content="Redis常见数据结构以及使用场景String: String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。 使用场景：常规缓存应用，计数器等。  Hash: Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。  使用场景：hash更适合于对象的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-23T15:18:23.923Z">
+<meta property="og:updated_time" content="2020-07-23T15:22:45.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis简介">
-<meta name="twitter:description" content="Redis常见数据结构以及使用场景 String:   String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。 使用场景：常规缓存应用，计数器等。   Hash:  Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。 使用场景：hash更适合">
+<meta name="twitter:description" content="Redis常见数据结构以及使用场景String: String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。 使用场景：常规缓存应用，计数器等。  Hash: Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。  使用场景：hash更适合于对象的">
   
     <link rel="alternative" href="/atom.xml" title="炫酷小子的博客" type="application/atom+xml">
   
@@ -155,38 +155,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Redis常见数据结构以及使用场景"><a href="#Redis常见数据结构以及使用场景" class="headerlink" title="Redis常见数据结构以及使用场景"></a>Redis常见数据结构以及使用场景</h4><ol>
-<li><p>String: </p>
-<ul>
+        <h4 id="Redis常见数据结构以及使用场景"><a href="#Redis常见数据结构以及使用场景" class="headerlink" title="Redis常见数据结构以及使用场景"></a>Redis常见数据结构以及使用场景</h4><h5 id="String"><a href="#String" class="headerlink" title="String:"></a><strong>String:</strong></h5><ul>
 <li>String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。</li>
 <li>使用场景：常规缓存应用，计数器等。</li>
 </ul>
+<h5 id="Hash"><a href="#Hash" class="headerlink" title="Hash:"></a><strong>Hash:</strong></h5><ul>
+<li><p>Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。</p>
 </li>
-<li><p>Hash:</p>
-<ul>
-<li>Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。</li>
-<li>使用场景：hash更适合于对象的存储（经常需要变更的信息），String更适合字符串存储。</li>
+<li><p>使用场景：hash更适合于对象的存储（经常需要变更的信息），String更适合字符串存储。</p>
+</li>
 </ul>
+<h5 id="List"><a href="#List" class="headerlink" title="List:"></a><strong>List:</strong></h5><ul>
+<li><p>实际上是一个链表。如果key不存在创建新的链表，如果key存在新增内容。在两边插入或者改动效率最高，中间元素相对较差。</p>
+<a id="more"></a>
 </li>
-<li>List:<ul>
-<li>实际上是一个链表。如果key不存在创建新的链表，如果key存在新增内容。在两边插入或者改动效率最高，中间元素相对较差。<a id="more"></a></li>
-<li>使用场景： 微博的关注列表，粉丝列表，消息列表等功能都可以用Redis的list结构来实现。</li>
+<li><p>使用场景： 微博的关注列表，粉丝列表，消息列表等功能都可以用Redis的list结构来实现。</p>
+</li>
 </ul>
+<h5 id="Set"><a href="#Set" class="headerlink" title="Set:"></a><strong>Set:</strong></h5><ul>
+<li><p>Set对外提供的功能与List类似，不同于Set可以自动排重。Set提供了判断某个成员是否在一个Set集合内的接口。可以基于Set轻易实现交集、并集、差集的操作。</p>
 </li>
-<li>Set:<ul>
-<li>Set对外提供的功能与List类似，不同于Set可以自动排重。Set提供了判断某个成员是否在一个Set集合内的接口。可以基于Set轻易实现交集、并集、差集的操作。</li>
-<li>应用场景：共同关注，共同粉丝，共同喜好等。</li>
-</ul>
-</li>
-<li><p>Sorted Set:</p>
-<ul>
+<li><p>应用场景：共同关注，共同粉丝，共同喜好等。</p>
+<h5 id="Sorted-Set"><a href="#Sorted-Set" class="headerlink" title="Sorted Set:"></a><strong>Sorted Set:</strong></h5></li>
 <li><p>和Set相比，Sorted Set增加了一个权重参数score，使得集合中的元素能够按score进行有序排行。</p>
 </li>
 <li><p>应用场景：在直播系统中，实时排行信息包含直播间在线用户列表、各种礼物排行榜等信息。</p>
 </li>
 </ul>
-</li>
-</ol>
 <h4 id="Redis过期时间处理"><a href="#Redis过期时间处理" class="headerlink" title="Redis过期时间处理"></a>Redis过期时间处理</h4><p>Redis过期时间处理时通过定性删除+惰性删除<br><strong>定期删除</strong>：Redis默认是每隔100ms就随机抽取一些设置了过期时间的key，检查其是否过期，如果过期就删除。注意这里是随机抽取的                ，因为每隔100ms就遍历所有设置过期时间的key的话，会给CPU带来很大的负载。<br><strong>惰性删除</strong>：定期删除可能会导致很多过期key到了时间并没有被删除掉，所以就有了惰性删除。假如你的过期key，靠定期删除没有被删除掉，还停留在内存里，除非你的系统区查一下那个key,才会被Redis给删除掉。<br>因为可能出现key过期，但是该key一直未被使用，过期key一直停留在内存中的情况，Redis还要通过内存淘汰机制来清理key。<br>Redis提供6中数据淘汰策略：</p>
 <blockquote>
 <p>​        1.volatile-lru:从已设置过期时间的数据集中挑选最近最少使用的数据淘汰。<br>    ​        2.volatile-ttl:从已设置过期时间的数据集中挑选将要过期的数据淘汰。<br>    ​        3.volatile-random：从已设置过期时间的数据集中任意选择数据淘汰。<br>    ​        4.allkeys-lru（最常被使用）:当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的key。<br>    ​        5.allkeys-random:从数据集中任意选择数据淘汰。<br>    ​        6.no-eviction:禁止驱逐数据，也就是说当内存不足以容纳新写入数据时，新写入操作会报错。<br>4.0版本后增加以下两种：<br>    ​        7.volatile-lfu:从已设置过期时间的数据集中挑选最不经常使用的数据淘汰。<br>    ​        8.allkeys-lfu:当内存不足以容纳新写入数据时，在键空间中，移除最不经常使用的key。</p>
@@ -411,11 +406,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">容器</a>
+                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
+                <a href="javascript:void(0)" class="js-tag color3">容器</a>
               </li>
              
               <li class="article-tag-list-item">

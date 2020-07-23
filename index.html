@@ -152,28 +152,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Redis常见数据结构以及使用场景"><a href="#Redis常见数据结构以及使用场景" class="headerlink" title="Redis常见数据结构以及使用场景"></a>Redis常见数据结构以及使用场景</h4><ol>
-<li><p>String: </p>
-<ul>
+        <h4 id="Redis常见数据结构以及使用场景"><a href="#Redis常见数据结构以及使用场景" class="headerlink" title="Redis常见数据结构以及使用场景"></a>Redis常见数据结构以及使用场景</h4><h5 id="String"><a href="#String" class="headerlink" title="String:"></a><strong>String:</strong></h5><ul>
 <li>String类型数据String数据结构是简单的k-v类型，value不仅可以是String,也可以是数字。</li>
 <li>使用场景：常规缓存应用，计数器等。</li>
 </ul>
+<h5 id="Hash"><a href="#Hash" class="headerlink" title="Hash:"></a><strong>Hash:</strong></h5><ul>
+<li><p>Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。</p>
 </li>
-<li><p>Hash:</p>
-<ul>
-<li>Hash是一个String类型的field和value的映射表，Hash特别适合用于存储对象，后续操作的时候，你可以直接仅仅修改这个对象中的某个字段的值。</li>
-<li>使用场景：hash更适合于对象的存储（经常需要变更的信息），String更适合字符串存储。</li>
+<li><p>使用场景：hash更适合于对象的存储（经常需要变更的信息），String更适合字符串存储。</p>
+</li>
 </ul>
-</li>
-<li>List:<ul>
-<li>实际上是一个链表。如果key不存在创建新的链表，如果key存在新增内容。在两边插入或者改动效率最高，中间元素相对较差。
+<h5 id="List"><a href="#List" class="headerlink" title="List:"></a><strong>List:</strong></h5><ul>
+<li><p>实际上是一个链表。如果key不存在创建新的链表，如果key存在新增内容。在两边插入或者改动效率最高，中间元素相对较差。</p>
         
           <a class="article-more-a" href="/2020/07/23/Redis简介/#more">more >></a>
         
       
 
       
-    </li></ul></li></ol></div>
+    </li></ul></div>
     <div class="article-info article-info-index">
       
       
@@ -1002,11 +999,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">容器</a>
+                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">初始化</a>
+                <a href="javascript:void(0)" class="js-tag color3">容器</a>
               </li>
              
               <li class="article-tag-list-item">
